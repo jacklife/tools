@@ -1,0 +1,9 @@
+Prometheus服务可以reload它的配置。如果这个配置错误，则更改后的配置不生效。配置reolad是通过给Prometheus服务发送信号量SIGHUP或者通过http发送一个post请求到/-/reload。这也会重载所有配置的规则文件(rule files)。
+
+Alertmanager能够在运行时动态加载配置文件。如果新的配置有错误，则配置中的变化不会生效，同时错误日志被输出到终端。通过发送SIGHUP信号量给这个进程，或者通过HTTP POST请求/-/reload，Alertmanager配置动态加载到内存。
+
+prometheus服务reload的post请求：
+http://localhost:9090/-/reload
+
+Altermanager  reload的post请求：
+http://localhost:9093/-/reload
